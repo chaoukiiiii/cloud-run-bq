@@ -13,7 +13,7 @@ def entry():
     # Load the file into BigQuery
     client = bigquery.Client()
     uri = "gs://cloud-run-bq-celine/sample-bq-load.csv"
-    table = "`fivetran-cf-api.cloud_run_bq.cloud-run-test`"
+    table = "fivetran-cf-api.cloud_run_bq.cloud-run-test"
 
     # If the user has not set the environment variable for the table then error out
     #if table is None:
