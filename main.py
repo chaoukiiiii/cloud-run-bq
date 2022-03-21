@@ -22,9 +22,17 @@ def entry():
 
     # Setup the job to append to the table if it already exists and to autodetect the schema
     job_config = bigquery.LoadJobConfig(
+        schema=[
+        bigquery.SchemaField("id", "STRING"),
+        bigquery.SchemaField("data1", "STRING"),
+        bigquery.SchemaField("data2", "STRING"),
+        bigquery.SchemaField("data3", "STRING"),
+        bigquery.SchemaField("data4", "STRING")
+    ],
         write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
         source_format=bigquery.SourceFormat.CSV,
-        autodetect=True,
+        skip_leading_rows=1,
+        autodetect=False
     )
 
     # Run the load job
@@ -38,3 +46,4 @@ def entry():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+a
