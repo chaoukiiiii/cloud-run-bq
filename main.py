@@ -41,9 +41,8 @@ def entry():
     # Run the job synchronously and wait for it to complete
     load_job.result()
 
-    return (f"Loaded file located at {uri} into BQ table {table}", 200)
+    print ("Loaded file located at")
 
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
-a
