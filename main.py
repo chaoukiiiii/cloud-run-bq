@@ -14,7 +14,7 @@ def entry():
     client = bigquery.Client()
     uri = "gs://celine_example_1/example_data/covid_19_data.csv"
     table = "sfeir-innovation.celine_example_1.cloud_run_bq"
-
+    print ("uri table client")
     # If the user has not set the environment variable for the table then error out
     #if table is None:
     #    print("Error: Table env variable not set, so returning.")
