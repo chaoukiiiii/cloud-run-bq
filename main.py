@@ -27,7 +27,7 @@ def entry():
         bigquery.SchemaField("ObservationDate", "DATE"),
         bigquery.SchemaField("province_state", "STRING"),
         bigquery.SchemaField("country_region", "STRING"),
-        bigquery.SchemaField("last_update", "DATEDTIME"),
+        bigquery.SchemaField("last_update", "STRING"),
         bigquery.SchemaField("confirmed", "NUMERIC"), 
         bigquery.SchemaField("deaths", "NUMERIC"),   
         bigquery.SchemaField("recoverd", "NUMERIC"),   
