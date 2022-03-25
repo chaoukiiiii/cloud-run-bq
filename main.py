@@ -12,8 +12,8 @@ app = Flask(__name__)
 def entry():
     # Load the file into BigQuery
     client = bigquery.Client()
-    uri = "gs://cloud-run-bq-celine/sample-bq-load.csv"
-    table = "fivetran-cf-api.cloud_run_bq.cloud-run-test"
+    uri = "gs://celine_example_1/example_data/covid_19_data.csv"
+    table = "sfeir-innovation.celine_example_1.cloud_run_bq"
 
     # If the user has not set the environment variable for the table then error out
     #if table is None:
@@ -23,13 +23,16 @@ def entry():
     # Setup the job to append to the table if it already exists and to autodetect the schema
     job_config = bigquery.LoadJobConfig(
         schema=[
-        bigquery.SchemaField("id", "STRING"),
-        bigquery.SchemaField("data1", "STRING"),
-        bigquery.SchemaField("data2", "STRING"),
-        bigquery.SchemaField("data3", "STRING"),
-        bigquery.SchemaField("data4", "STRING")
+        bigquery.SchemaField("sno", "INTEGER"),
+        bigquery.SchemaField("ObservationDate", "DATE"),
+        bigquery.SchemaField("province_state", "STRING"),
+        bigquery.SchemaField("country_region", "STRING"),
+        bigquery.SchemaField("last_update", "DATEDTIME"),
+        bigquery.SchemaField("confirmed", "NUMERIC"), 
+        bigquery.SchemaField("deaths", "NUMERIC"),   
+        bigquery.SchemaField("recoverd", "NUMERIC"),   
     ],
-        write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
+        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
         source_format=bigquery.SourceFormat.CSV,
         skip_leading_rows=1,
         autodetect=False
