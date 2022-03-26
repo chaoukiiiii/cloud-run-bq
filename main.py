@@ -24,7 +24,7 @@ def entry():
     job_config = bigquery.LoadJobConfig(
         schema=[
         bigquery.SchemaField("sno", "INTEGER"),
-        bigquery.SchemaField("ObservationDate", "DATE"),
+        bigquery.SchemaField("ObservationDate", "STRING"),
         bigquery.SchemaField("province_state", "STRING"),
         bigquery.SchemaField("country_region", "STRING"),
         bigquery.SchemaField("last_update", "STRING"),
