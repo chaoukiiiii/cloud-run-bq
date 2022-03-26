@@ -12,8 +12,8 @@ app = Flask(__name__)
 def entry():
     # Load the file into BigQuery
     client = bigquery.Client()
-    uri = "gs://cloud-run-bq-celine/example_data_covid_19_data.csv"
-    table = "fivetran-cf-api.celine_example_1.cloud_run_bq"
+    uri = "gs://celine_example_1/example_data/covid_19_data.csv"
+    table = "sfeir-innovation.celine_example_1.cloud_run_bq"
     print ("uri table client")
     # If the user has not set the environment variable for the table then error out
     #if table is None:
