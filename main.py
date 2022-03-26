@@ -8,7 +8,7 @@ from google.cloud import bigquery
 app = Flask(__name__)
 
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["POST","GET"])
 def entry():
     # Load the file into BigQuery
     client = bigquery.Client()
