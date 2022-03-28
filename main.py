@@ -30,7 +30,7 @@ def entry():
     print("bucket Name :", bucket)
     print("folder Name :", folder)
     print("pattern of files :", pattern)
-    print("delimter  :", delimter)
+    print("delimiter  :", delimter)
     print("dataset Name :", dataset)
     print("table Name :",table_name)
     print("archive_folder Name :",archive_folder)
