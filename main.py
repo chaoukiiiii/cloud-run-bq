@@ -3,6 +3,7 @@ import re
 
 from flask import Flask, request
 from google.cloud import bigquery
+from google.cloud import storage
 
 
 app = Flask(__name__)
