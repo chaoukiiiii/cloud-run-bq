@@ -43,9 +43,11 @@ def entry():
     uri=bucket+"/"+folder+"/"+pattern+"*.csv"
     # Setup the job to append to the table if it already exists and to autodetect the schema
     job_config = bigquery.LoadJobConfig(
+    autodetect=True,
+    skip_leading_rows=1,
     write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
-    source_format=bigquery.SourceFormat.CSV,
-    autodetect=True
+    source_format=bigquery.SourceFormat.CSV
+    
     )
 
     # Run the load job
