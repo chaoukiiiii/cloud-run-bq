@@ -45,7 +45,6 @@ def entry():
     job_config = bigquery.LoadJobConfig(
     write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
     source_format=bigquery.SourceFormat.CSV,
-    skip_leading_rows=1,
     autodetect=True
     )
 
