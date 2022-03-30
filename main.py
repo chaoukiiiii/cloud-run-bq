@@ -58,7 +58,8 @@ def entry():
 
     print ("Loaded file located at")
     storage_client = storage.Client()
-    bucket="cloud-run-bq-celine"
+    #bucket="gs://cloud-run-bq-celine"
+    bucket=bucket[5:]
     bucket_initial = storage_client.get_bucket(bucket)
     blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
     for i in blobs:
