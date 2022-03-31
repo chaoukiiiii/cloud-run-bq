@@ -58,9 +58,9 @@ def entry():
         return ("Warning  there is No files match the provided pattern.", 200)
     try:
        client.get_dataset(dataset)  # Make an API request.
-       print("Dataset {} already exists".format(dataset_id))
+       print("Dataset {} already exists".format(dataset))
     except NotFound:
-        print("Dataset {} is not found".format(dataset_id))
+        print("Dataset {} is not found".format(dataset))
         return ("Error  there is No Dataset matchs the provided dataset variable.", 500)
     # Setup the job to append to the table if it already exists and to autodetect the schema
     job_config = bigquery.LoadJobConfig(
