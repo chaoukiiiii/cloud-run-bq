@@ -76,7 +76,8 @@ def entry():
     load_job.result()
 
     print ("Loaded files located at ",bucket, " /",folder,"/")
-    
+    bucket_initial = storage_client.get_bucket(bucket)
+    blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
     for i in blobs:
         bucket_initial.rename_blob(i, new_name=i.name.replace(folder+'/', archive_folder+'/archived_'))
 
