@@ -83,5 +83,6 @@ def entry():
         bucket_initial.rename_blob(i, new_name=i.name.replace(folder+'/', archive_folder+'/archived_'))
 
     print ("Archives files to ",bucket, " /",archive_folder,"/")
+    return (f"Loaded file located at {uri} into BQ table {table}", 200)
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
