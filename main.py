@@ -52,11 +52,11 @@ def entry():
     storage_client = storage.Client()
     
     bucket_initial = storage_client.get_bucket(bucket)
-    blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
-    if len(blobs)==0:
+    try:        
+       blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
+    except NotFound:
         print("Warning:  there is No files match the provided pattern")
         return ("Warning  there is No files match the provided pattern.", 200)
-
     try:
        client.get_dataset(dataset)  # Make an API request.
        print("Dataset {} already exists".format(dataset_id))
