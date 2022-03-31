@@ -51,11 +51,7 @@ def entry():
     # get files from uri
     storage_client = storage.Client()
     bucket_initial = storage_client.get_bucket(bucket)
-    try:        
-       blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
-    except NotFound:
-        print("Warning:  there is No files match the provided pattern")
-        return ("Warning  there is No files match the provided pattern.", 200)
+    blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
     if len(list(blobs))==0:
         print("Warning:  there is No files match the provided pattern")
         return ("Warning  there is No files match the provided pattern.", 200)
