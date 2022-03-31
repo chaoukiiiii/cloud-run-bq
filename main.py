@@ -47,10 +47,9 @@ def entry():
 
     #set destination file + uri of csv files
     table=dataset+"."+table_name
-    uri=bucket+"/"+folder+"/"+pattern+"*.csv"
+    uri="gs://"+bucket+"/"+folder+"/"+pattern+"*.csv"
     # get files from uri
     storage_client = storage.Client()
-    
     bucket_initial = storage_client.get_bucket(bucket)
     try:        
        blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
