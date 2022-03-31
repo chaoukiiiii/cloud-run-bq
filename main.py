@@ -56,7 +56,7 @@ def entry():
     except NotFound:
         print("Warning:  there is No files match the provided pattern")
         return ("Warning  there is No files match the provided pattern.", 200)
-    if len(blobs)==0:
+    if len(list(blobs))==0:
         print("Warning:  there is No files match the provided pattern")
         return ("Warning  there is No files match the provided pattern.", 200)
     try:
