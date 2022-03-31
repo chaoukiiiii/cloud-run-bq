@@ -35,7 +35,7 @@ def entry():
     print("table Name :",table_name)
     print("archive_folder Name :",archive_folder)
     ########## test if the envirement variables are set correctly: ##########
-    if bucket is None or not(bucket.startswith("gs://")):
+    if bucket is None:
         print("Error: bucket environment variable is not defined correctly")
         return ("Error bucket environment variable is not defined correctly.", 500)
     if table_name is None or folder is None or pattern is None or delimiter is None or dataset is None or archive_folder is None:
