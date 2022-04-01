@@ -11,7 +11,7 @@ app = Flask(__name__)
 def entry():
     data = request.get_json()
     data1,data2=data['name'],data['type']
-    print(data1,data2,"################################################"
+    print(data1,data2,"################################################")
     client = bigquery.Client()
     bucket = os.environ.get('BUCKET')
     folder=os.environ.get('FOLDER')
