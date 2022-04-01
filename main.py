@@ -9,8 +9,9 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST","GET"])
 def entry():
-    data = request.get_json()
     client = bigquery.Client()
+    storage_client = storage.Client()
+    data = request.get_json()
     bucket = data['BUCKET']
     folder=data['FOLDER']
     pattern=data['PATTERN']
@@ -55,7 +56,6 @@ def entry():
     table=dataset+"."+table_name
     uri="gs://"+bucket+"/"+folder+"/"+pattern+"*.csv"
     # get files from uri
-    storage_client = storage.Client()
     bucket_initial = storage_client.get_bucket(bucket)
     blobs = bucket_initial.list_blobs(prefix=folder+'/'+pattern)
     if len(list(blobs))==0:
