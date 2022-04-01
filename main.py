@@ -10,7 +10,6 @@ app = Flask(__name__)
 @app.route("/", methods=["POST","GET"])
 def entry():
     data = request.get_json()
-    data1,data2=data['name'],data['type']
     client = bigquery.Client()
     bucket = data['BUCKET']
     folder=data['FOLDER']
