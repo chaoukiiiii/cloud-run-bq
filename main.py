@@ -11,15 +11,14 @@ app = Flask(__name__)
 def entry():
     data = request.get_json()
     data1,data2=data['name'],data['type']
-    print(data1,data2,"################################################")
     client = bigquery.Client()
-    bucket = os.environ.get('BUCKET')
-    folder=os.environ.get('FOLDER')
-    pattern=os.environ.get('PATTERN')
-    delimiter=os.environ.get('DELIMITER')
-    dataset=os.environ.get('DATASET')
-    table_name=os.environ.get('TABLENAME')
-    archive_folder=os.environ.get('ARCHIVEFOLDER')
+    bucket = data['BUCKET']
+    folder=data['FOLDER']
+    pattern=data['PATTERN']
+    delimiter=data['DELIMITER']
+    dataset=data['DATASET']
+    table_name=data['TABLENAME']
+    archive_folder=data['ARCHIVEFOLDER']
     ################### values example for envirement variable #################
     #bucket = "gs://cloud-run-bq-celine"
     #folder = "covid_folder"
@@ -40,6 +39,12 @@ def entry():
     if bucket is None:
         print("Error: bucket environment variable is not defined correctly")
         return ("Error bucket environment variable is not defined correctly.", 500)
+    try:
+        C = storage_client.get_bucket(bucket)
+        print(C)
+    except:
+        print("Error Verify the Name of bucket please ")
+        return ("Error Verify the Name of bucket please.", 500)
     if table_name is None or folder is None or pattern is None or delimiter is None or dataset is None or archive_folder is None:
         print("Error:  environments variables are not defined correctly")
         return ("Error  environments variables are not defined correctly.", 500)
